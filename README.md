@@ -30,7 +30,7 @@ bash ./create_sv_answer/run.sh
 
 ```
 cd ${this_repository}
-singularity pull image/minimap2_2.17.sif docker://ken01nn/minimap2:2.17
+singularity pull ./image/minimap2_2.17.sif docker://ken01nn/minimap2:2.17
 
 bash ./run_alignment/run.sh
 ```
@@ -40,7 +40,7 @@ bash ./run_alignment/run.sh
 sniffles2
 ```
 cd ${this_repository}
-singularity pull image/sniffles2_2.0.7.sif docker://aokad/snilles2:2.0.7
+singularity pull ./image/sniffles2_2.0.7.sif docker://aokad/snilles2:2.0.7
 singularity pull ./image/ob_utils_0.1.0.sif docker://aokad/ob_utils:0.1.0
 
 bash run_sv_tool/run_sniffles2.sh
