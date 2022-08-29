@@ -43,7 +43,7 @@ cd ${this_repository}
 singularity pull ./image/sniffles2_2.0.7.sif docker://aokad/snilles2:2.0.7
 singularity pull ./image/ob_utils_0.1.0.sif docker://aokad/ob_utils:0.1.0
 
-bash run_sv_tool/run_sniffles2.sh
+bash ./run_sv/run_sniffles2.sh
 ```
 
 nanomonsv
@@ -52,7 +52,7 @@ cd ${this_repository}
 singularity pull ./image/nanomonsv_v0.5.0.sif docker://friend1ws/nanomonsv:v0.5.0
 singularity pull ./image/ob_utils_0.1.0.sif docker://aokad/ob_utils:0.1.0
 
-bash run_sv/run_nanomonsv.sh
+bash ./run_sv/run_nanomonsv.sh
 ```
 
 ### 4. Plot
@@ -63,5 +63,5 @@ conda activate r_env
 conda install r-cowplot r-wesanderson
 
 cd ${this_repository}
-bash plot/run.sh
+bash ./plot/run.sh
 ```
