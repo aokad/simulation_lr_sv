@@ -13,6 +13,7 @@ git clone https://github.com/aokad/simulation_lr_sv.git
 cd ${this_repository}
 singularity pull ./image/simulationsv-set_0.1.0.sif docker://aokad/simulationsv-set:0.1.0
 singularity pull ./image/nanostat_1.4.0-s.sif docker://ken01nn/nanostat:1.4.0-s
+singularity pull ./image/sra-tools_3.0.0.sif docker://ncbi/sra-tools:3.0.0
 
 bash ./create_simulation_seq/run.sh
 ```
