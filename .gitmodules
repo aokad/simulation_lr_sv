@@ -1,0 +1,3 @@
+[submodule "simulation_sv_set"]
+	path = simulation_sv_set
+	url = https://github.com/ncc-ccat-gap/simulation_sv_set.git
