@@ -14,7 +14,7 @@
 set -eux
 
 singularity exec $PWD/image/simulationsv-set_0.1.0.sif \
-sh -c "samtools view -hb $PWD/bam/COLO829BL/COLO829BL.bam chr22 > $$PWD/bam/COLO829BL/COLO829BL_chr22.bam && \
+sh -c "samtools view -hb $PWD/bam/COLO829BL/COLO829BL.bam chr22 > $PWD/bam/COLO829BL/COLO829BL_chr22.bam && \
  samtools index $PWD/bam/COLO829BL/COLO829BL_chr22.bam && \
  samtools bam2fq $PWD/bam/COLO829BL/COLO829BL_chr22.bam > $PWD/bam/COLO829BL/COLO829BL_chr22.fastq && \
  python $PWD/simulation_sv_set/script/extract_chr22.py $PWD/reference/GRCh38.d1.vd1.fa > $PWD/reference/GRCh38.d1.vd1.chr22.fa && \
