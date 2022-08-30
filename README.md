@@ -14,12 +14,9 @@ wget https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834 -O GRC
 tar -zxvf GRCh38.d1.vd1.fa.tar.gz
 wget https://api.gdc.cancer.gov/data/2c5730fb-0909-4e2a-8a7a-c9a7f8b2dad5 -O GRCh38.d1.vd1_GATK_indices.tar.gz
 tar -zxvf GRCh38.d1.vd1_GATK_indices.tar.gz
-```
 
-download reference file for minimap2
-```
-cd simulation_lr_sv
-aws s3 cp s3://genomon-bucket/GDC.GRCh38.d1.vd1/minimap2/GRCh38.d1.vd1.mmi ./reference/
+# download reference file for minimap2
+aws s3 cp s3://genomon-bucket/GDC.GRCh38.d1.vd1/minimap2/GRCh38.d1.vd1.mmi ./
 ```
 
 ## How To Use
