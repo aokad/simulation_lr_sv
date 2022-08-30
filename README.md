@@ -2,7 +2,7 @@
 
 ## Set Up
 ```
-git clone https://github.com/aokad/simulation_lr_sv.git
+git clone https://github.com/aokad/simulation_lr_sv.git --recursive
 ```
 
 ## How To Use
