@@ -20,6 +20,7 @@ set -eux -o pipefail
 SOMATIC_BAM=NONE
 GERMLINE_BAM=$PWD/output/minimap2/simulated_germline2_chr1-22XY_aligned.bam
 OUTPUT_PREFIX=$PWD/output/subsample/minimap2_germline2/simulated_chr1-22XY
+SCRIPT_DIR=$PWD/create_simulation_seq
 
 OUTPUT_NAME=$(basename ${OUTPUT_PREFIX})
 OUTPUT_DIR=$(dirname ${OUTPUT_PREFIX})
@@ -28,7 +29,7 @@ mkdir -p ${OUTPUT_DIR}
 GERMLINE_NANOSTAT=$PWD/output/nanostat/simulated_germline2_chr1-22XY_aligned.minimap2.txt
 OUTPUT_PARAM=${OUTPUT_PREFIX}.params_minimap2_germline2
 
-python $(dirname $0)/create_params.py ${GERMLINE_NANOSTAT} ${OUTPUT_PARAM} 30000000000
+python ${SCRIPT_DIR}/create_params.py ${GERMLINE_NANOSTAT} ${OUTPUT_PARAM} 30000000000
 source ${OUTPUT_PARAM}
 
 tmp=(${params[$SGE_TASK_ID]})
