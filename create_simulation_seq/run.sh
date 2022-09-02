@@ -21,12 +21,12 @@ qsub -N minimap2_simulated_germline2 -hold_jid nanosim_simulated_germline2 ${SCR
 
 # nanostat
 OUTPUT_DIR=$PWD/output
-BAM_SOMATIC=${OUTPUT_DIR}/minimap2/simulated_somatic_aligned.bam
-BAM_GERMLINE1=${OUTPUT_DIR}/minimap2/simulated_germline1_aligned.bam
-BAM_GERMLINE2=${OUTPUT_DIR}/minimap2/simulated_germline2_aligned.bam 
-NANOSTAT_SOMATIC=${OUTPUT_DIR}/nanostat/simulated_somatic_aligned.minimap2.txt
-NANOSTAT_GERMLINE1=${OUTPUT_DIR}/nanostat/simulated_germline1_aligned.minimap2.txt
-NANOSTAT_GERMLINE2=${OUTPUT_DIR}/nanostat/simulated_germline2_aligned.minimap2.txt
+BAM_SOMATIC=${OUTPUT_DIR}/minimap2/simulated_somatic_chr1-22XY_aligned.bam
+BAM_GERMLINE1=${OUTPUT_DIR}/minimap2/simulated_germline1_chr1-22XY_aligned.bam
+BAM_GERMLINE2=${OUTPUT_DIR}/minimap2/simulated_germline2_chr1-22XY_aligned.bam 
+NANOSTAT_SOMATIC=${OUTPUT_DIR}/nanostat/simulated_somatic_chr1-22XY_aligned.txt
+NANOSTAT_GERMLINE1=${OUTPUT_DIR}/nanostat/simulated_germline1_chr1-22XY_aligned.txt
+NANOSTAT_GERMLINE2=${OUTPUT_DIR}/nanostat/simulated_germline2_chr1-22XY_aligned.txt
 
 qsub -N nanostat_somatic -hold_jid minimap2_simulated_somatic ${SCRIPT_DIR}/nanostat.sh ${BAM_SOMATIC} ${NANOSTAT_SOMATIC}
 qsub -N nanostat_germline1 -hold_jid minimap2_simulated_germline1 ${SCRIPT_DIR}/nanostat.sh ${BAM_GERMLINE1} ${NANOSTAT_GERMLINE1}

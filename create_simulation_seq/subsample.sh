@@ -26,8 +26,8 @@ OUTPUT_NAME=$(basename ${OUTPUT_PREFIX})
 OUTPUT_DIR=$(dirname ${OUTPUT_PREFIX})
 mkdir -p ${OUTPUT_DIR}
 
-SOMATIC_NANOSTAT=$PWD/output/nanostat/simulated_somatic_chr1-22XY_aligned.minimap2.txt
-GERMLINE_NANOSTAT=$PWD/output/nanostat/simulated_germline1_chr1-22XY_aligned.minimap2.txt
+SOMATIC_NANOSTAT=$PWD/output/nanostat/simulated_somatic_chr1-22XY_aligned.txt
+GERMLINE_NANOSTAT=$PWD/output/nanostat/simulated_germline1_chr1-22XY_aligned.txt
 OUTPUT_PARAM=${OUTPUT_PREFIX}.params_minimap2
 
 python ${SCRIPT_DIR}/create_params.py ${SOMATIC_NANOSTAT},${GERMLINE_NANOSTAT} ${OUTPUT_PARAM} 30000000000

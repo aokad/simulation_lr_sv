@@ -37,29 +37,21 @@ bash ./create_simulation_seq/run.sh
 
 ```
 cd ${this_repository}
-singularity pull ./image/chain-file_0.1.0.sif docker://ken01nn/chain-file_0.1.0.sif
+singularity pull ./image/chain-file_0.1.0.sif docker://aokad/chain-file:0.1.0
 
-bash ./create_sv_answer/run.sh
+bash ./create_golden/run.sh
 ```
 
 ### 3. Run SV detection tool
 
-sniffles2
+nanomonsv, sniffles2, delly
 ```
 cd ${this_repository}
-singularity pull ./image/sniffles2_2.0.7.sif docker://aokad/snilles2:2.0.7
-singularity pull ./image/ob_utils_0.1.0.sif docker://aokad/ob_utils:0.1.0
-
-bash ./run_sv/run_sniffles2.sh
-```
-
-nanomonsv
-```
-cd ${this_repository}
+singularity pull ./image/sniffles2_2.0.7.sif docker://aokad/sniffles2:2.0.7
 singularity pull ./image/nanomonsv_v0.5.0.sif docker://friend1ws/nanomonsv:v0.5.0
-singularity pull ./image/ob_utils_0.1.0.sif docker://aokad/ob_utils:0.1.0
+singularity pull ./image/ob_utils_0.0.12.sif docker://aokad/ob_utils:0.0.12
 
-bash ./run_sv/run_nanomonsv.sh
+bash ./run_sv/run.sh
 ```
 
 ### 4. Plot
