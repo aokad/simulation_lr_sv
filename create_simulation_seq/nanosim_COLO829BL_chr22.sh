@@ -14,12 +14,12 @@
 
 set -eux
 
-mkdir -p $PWD/nanosim_training/training_COLO829BL_chr22
+mkdir -p $PWD/output/nanosim_training/training_COLO829BL_chr22
 
 # トレーニングデータの作成
 singularity run $PWD/image/simulationsv-set_0.1.0.sif \
   python /usr/local/NanoSim-2.6.0/src/read_analysis.py genome \
     -i  $PWD/bam/COLO829BL/COLO829BL_chr22.fastq \
     -rg $PWD/reference/GRCh38.d1.vd1.chr22.fa \
-    -o $PWD/nanosim_training/training_COLO829BL_chr22 \
+    -o $PWD/output/nanosim_training/training_COLO829BL_chr22 \
     -t 8

@@ -34,7 +34,7 @@ for a in "DP10_TP0_TDP0"    \
          "DP50_TP80_TDP40"  \
          "DP50_TP100_TDP50"
 do
-    # フィルタスクリプトを実行
+    # filtering
     python3 $PWD/script/simulation_sv_set/script/nanomonsv_filter.py \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result.txt \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result.vcf > \
@@ -44,12 +44,12 @@ do
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_filt.txt > \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_filt2.txt
     
-    # 染色体順にソートするやつ。scaffoldもフィルタされる
+    # sort by chromosome + filtering scaffold
     python3 $PWD/script/simulation_sv_set/script/sort_bedpe.py \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_filt2.txt > \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_rmdup.txt
     
-    #正解セットとの比較
+    # vs golden data
     python3 $PWD/script/simulation_sv_set/script/golden_data_check.py \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_rmdup.txt \
     $PWD/output/golden/simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz \
@@ -66,8 +66,8 @@ do
     done
 done
 
-#正解セットのTP,FP,FNをカウント
+# count TP,FP,FN
 python3 $PWD/script/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_data/nanomonsv/ $PWD/output/vs_golden_data/nanomonsv/simulation_count.txt
 
-#サポートリードをカウント
+# count support reads
 python3 $PWD/script/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/nanomonsv $PWD/output/vs_golden_data/nanomonsv/simulation_count_support.txt

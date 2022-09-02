@@ -28,7 +28,7 @@ mkdir -p $PWD/output/nanosim/
 singularity run $PWD/image/simulationsv-set_0.1.0.sif \
   python /usr/local/NanoSim-2.6.0/src/simulator.py genome \
     -rg $FASTA \
-    -c $PWD/nanosim_training/training_COLO829BL_chr22 \
+    -c $PWD/output/nanosim_training/training_COLO829BL_chr22 \
     -o $PWD/output/nanosim/simulated_${MODE}_chr1-22XY \
     --fastq --basecaller guppy --strandness 0.5 --number 20000000 --num_threads 32
 

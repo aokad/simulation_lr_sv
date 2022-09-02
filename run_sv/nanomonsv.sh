@@ -53,21 +53,20 @@ tmp=(${params[$SGE_TASK_ID]})
 NAME=${tmp[0]}
 CONTROL=${tmp[1]}
 
-WDIR=/home/aiokada/sandbox/simulation_sv
-singularity exec $WDIR/image/nanomonsv_v0.5.0.sif \
+singularity exec $PWD/image/nanomonsv_v0.5.0.sif \
   nanomonsv parse \
-    $WDIR/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
-    $WDIR/output/nanomonsv/${NAME}/${NAME}
+    $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
+    $PWD/output/nanomonsv/${NAME}/${NAME}
 
-CONTROL_PANEL_PREFIX=/home/aiokada/resources/control_panel/hprc_year1_data_freeze_nanopore_minimap2_2_24_merge_control/hprc_year1_data_freeze_nanopore_minimap2_2_24_merge_control
+CONTROL_PANEL_PREFIX=$PWD/control_panel/hprc_year1_data_freeze_nanopore_minimap2_2_24_merge_control/hprc_year1_data_freeze_nanopore_minimap2_2_24_merge_control
 
-singularity exec $WDIR/image/nanomonsv_v0.5.0.sif \
+singularity exec $PWD/image/nanomonsv_v0.5.0.sif \
   nanomonsv get \
-    $WDIR/output/nanomonsv/${NAME}/${NAME} \
-    $WDIR/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
-    /home/aiokada/resources/database/GRCh38.d1.vd1/GRCh38.d1.vd1.fa \
-    --control_prefix $WDIR/output/nanomonsv/${CONTROL}/${CONTROL} \
-    --control_bam $WDIR/output/subsample/minimap2_germline2/simulated_chr1-22XY.${CONTROL}.merge.subsample.bam \
+    $PWD/output/nanomonsv/${NAME}/${NAME} \
+    $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
+    $PWD/reference/GRCh38.d1.vd1.fa \
+    --control_prefix $PWD/output/nanomonsv/${CONTROL}/${CONTROL} \
+    --control_bam $PWD/output/subsample/minimap2_germline2/simulated_chr1-22XY.${CONTROL}.merge.subsample.bam \
     --processes 8 \
     --single_bnd \
     --use_racon \

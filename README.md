@@ -17,6 +17,11 @@ tar -zxvf GRCh38.d1.vd1_GATK_indices.tar.gz
 
 # download reference file for minimap2
 aws s3 cp s3://genomon-bucket/GDC.GRCh38.d1.vd1/minimap2/GRCh38.d1.vd1.mmi ./
+
+# donwload controlpanel (nanomonsv)
+mkdir -p $PWD/control_panel
+wget https://zenodo.org/api/files/5c116b75-6ef0-4445-9fa8-c5989639da5f/hprc_year1_data_freeze_nanopore_minimap2_2_24_merge_control.tar.gz -O $PWD/control_panel/hprc_year1_data_freeze_nanopore_minimap2_2_24_merge_control.tar.gz
+tar -xvf $PWD/control_panel/hprc_year1_data_freeze_nanopore_minimap2_2_24_merge_control.tar.gz
 ```
 
 ## How To Use
@@ -50,6 +55,7 @@ cd ${this_repository}
 singularity pull ./image/sniffles2_2.0.7.sif docker://aokad/sniffles2:2.0.7
 singularity pull ./image/nanomonsv_v0.5.0.sif docker://friend1ws/nanomonsv:v0.5.0
 singularity pull ./image/ob_utils_0.0.12.sif docker://aokad/ob_utils:0.0.12
+wget https://github.com/dellytools/delly/releases/download/v1.0.3/delly_v1.0.3.sif -O ./image/delly_v1.0.3.sif
 
 bash ./run_sv/run.sh
 ```

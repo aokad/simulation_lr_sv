@@ -36,8 +36,7 @@ for a in "DP10_TP0_TDP0"    \
          "DP50_TP100_TDP50"
 do
     control=$(echo ${a} | cut -f 1 -d _)
-    #ob_utilsを使用したsomatic filter
-    #controlサンプルによるフィルタ + nanomonsv formatに変換
+    # somatic filter with controls + convert to nanomonsv format
     ob_utils delly_sv \
     --in_delly_tumor_sv output/delly/${a}/${a}.bcf \
     --in_delly_control_sv output/delly/${control}/${control}.bcf \
@@ -45,12 +44,12 @@ do
     --filter_scaffold_option \
     --f_grc --margin 200 --max_control_support_read 0
     
-    #白石さんに作ってもらったfilterスクリプトを実行
+    # filtering
     python3 $PWD/script/simulation_sv_set/script/rmdup.py \
     output/ob_utils/delly/${a}.txt > \
     output/ob_utils/delly/${a}.rmdup.txt
     
-    #正解セットとの比較
+    # vs golden data
     python3 $PWD/script/simulation_sv_set/script/golden_data_check.py \
     $PWD/output/ob_utils/delly/${a}.rmdup.txt \
     $PWD/output/golden/simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz \
@@ -67,8 +66,8 @@ do
     done
 done
 
-#正解セットのTP,FP,FNをカウント
+# count TP,FP,FN
 python3 $PWD/script/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_data/delly/ $PWD/output/vs_golden_data/delly/simulation_count.txt
 
-#サポートリードをカウント
+# count support reads
 python3 $PWD/script/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/delly $PWD/output/vs_golden_data/delly/simulation_count_support.txt

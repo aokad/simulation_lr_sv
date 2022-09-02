@@ -25,8 +25,7 @@ params=(
 
 NAME=${params[$SGE_TASK_ID]}
 
-WDIR=/home/aiokada/sandbox/simulation_sv
 singularity exec $WDIR/image/nanomonsv_v0.5.0.sif \
   nanomonsv parse \
-    $WDIR/output/subsample/minimap2_germline2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
-    $WDIR/output/nanomonsv/${NAME}/${NAME}
+    $PWD/output/subsample/minimap2_germline2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
+    $PWD/output/nanomonsv/${NAME}/${NAME}

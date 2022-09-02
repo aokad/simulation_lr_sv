@@ -25,12 +25,10 @@ params=(
 
 NAME=${params[$SGE_TASK_ID]}
 
-WDIR=/home/aiokada/sandbox/simulation_sv
+mkdir -p $PWD/output/delly/${NAME}
 
-mkdir -p $WDIR/output/delly/${NAME}
-
-singularity exec $WDIR/image/delly_v1.0.3.sif \
+singularity exec $PWD/image/delly_v1.0.3.sif \
   delly lr \
-    -y ont -o $WDIR/output/delly/${NAME}/${NAME}.bcf \
-    -g /home/aiokada/resources/database/GRCh38.d1.vd1/GRCh38.d1.vd1.fa \
-    $WDIR/output/subsample/minimap2_germline2/simulated_chr1-22XY.${NAME}.merge.subsample.bam
+    -y ont -o $PWD/output/delly/${NAME}/${NAME}.bcf \
+    -g $PWD/reference/GRCh38.d1.vd1.fa \
+    $PWD/output/subsample/minimap2_germline2/simulated_chr1-22XY.${NAME}.merge.subsample.bam
