@@ -11,7 +11,9 @@
 #$ -j y
 #$ -l s_vmem=8G
 
+set -eux
+
 SCRIPT_FILE=$1
 
-singularity exec $WDIR/image/ob_utils_0.0.12.sif \
+singularity exec $PWD/image/ob_utils_0.0.12.sif \
     bash ${SCRIPT_FILE}

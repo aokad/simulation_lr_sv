@@ -35,22 +35,22 @@ for a in "DP10_TP0_TDP0"    \
          "DP50_TP100_TDP50"
 do
     # filtering
-    python3 $PWD/script/simulation_sv_set/script/nanomonsv_filter.py \
+    python3 $PWD/simulation_sv_set/script/nanomonsv_filter.py \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result.txt \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result.vcf > \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_filt.txt
     
-    python3 $PWD/script/simulation_sv_set/script/rmdup.py \
+    python3 $PWD/simulation_sv_set/script/rmdup.py \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_filt.txt > \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_filt2.txt
     
     # sort by chromosome + filtering scaffold
-    python3 $PWD/script/simulation_sv_set/script/sort_bedpe.py \
+    python3 $PWD/simulation_sv_set/script/sort_bedpe.py \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_filt2.txt > \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_rmdup.txt
     
     # vs golden data
-    python3 $PWD/script/simulation_sv_set/script/golden_data_check.py \
+    python3 $PWD/simulation_sv_set/script/golden_data_check.py \
     $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_rmdup.txt \
     $PWD/output/golden/simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz \
     $PWD/output/vs_golden_data/nanomonsv/simulated_somatic_minimap2_${a}_vs_goldendata.txt
@@ -58,7 +58,7 @@ do
     for support_read in `seq 3 10`
     do
         mkdir -p $PWD/output/vs_golden_data/nanomonsv_support_${support_read}
-        python3 $PWD/script/simulation_sv_set/script/golden_data_check_support.py \
+        python3 $PWD/simulation_sv_set/script/golden_data_check_support.py \
         $PWD/output/nanomonsv/${a}/${a}.nanomonsv.result_rmdup.txt \
         $PWD/output/golden/simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz \
         $PWD/output/vs_golden_data/nanomonsv_support_${support_read}/simulated_somatic_minimap2_${a}_vs_goldendata.txt \
@@ -67,7 +67,7 @@ do
 done
 
 # count TP,FP,FN
-python3 $PWD/script/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_data/nanomonsv/ $PWD/output/vs_golden_data/nanomonsv/simulation_count.txt
+python3 $PWD/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_data/nanomonsv/ $PWD/output/vs_golden_data/nanomonsv/simulation_count.txt
 
 # count support reads
-python3 $PWD/script/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/nanomonsv $PWD/output/vs_golden_data/nanomonsv/simulation_count_support.txt
+python3 $PWD/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/nanomonsv $PWD/output/vs_golden_data/nanomonsv/simulation_count_support.txt

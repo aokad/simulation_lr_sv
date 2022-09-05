@@ -27,7 +27,7 @@ OUTPUT_DIR=$(dirname ${OUTPUT_PREFIX})
 mkdir -p ${OUTPUT_DIR}
 
 GERMLINE_NANOSTAT=$PWD/output/nanostat/simulated_germline2_chr1-22XY_aligned.txt
-OUTPUT_PARAM=${OUTPUT_PREFIX}.params_minimap2_germline2
+OUTPUT_PARAM=${OUTPUT_PREFIX}.params_minimap2_germline2.${SGE_TASK_ID}
 
 python ${SCRIPT_DIR}/create_params.py ${GERMLINE_NANOSTAT} ${OUTPUT_PARAM} 30000000000
 source ${OUTPUT_PARAM}

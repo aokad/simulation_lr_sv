@@ -10,7 +10,6 @@
 #$ -o ./log/
 #$ -j y
 #$ -l s_vmem=20G
-#$ -l intel
 
 set -eux
 
@@ -25,7 +24,7 @@ params=(
 
 NAME=${params[$SGE_TASK_ID]}
 
-singularity exec $WDIR/image/nanomonsv_v0.5.0.sif \
+singularity exec $PWD/image/nanomonsv_v0.5.0.sif \
   nanomonsv parse \
     $PWD/output/subsample/minimap2_germline2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
     $PWD/output/nanomonsv/${NAME}/${NAME}

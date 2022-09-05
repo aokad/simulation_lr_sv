@@ -13,7 +13,5 @@
 
 set -eux
 
-SCRIPT_FILE=$1
-
 singularity exec $PWD/image/chain-file_0.1.0.sif \
-    bash ${SCRIPT_FILE}
+    bash $PWD/create_sv_answer/shell_twobit_info.sh

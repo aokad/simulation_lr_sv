@@ -72,7 +72,7 @@ for i in ${chrom_array[@]}; do
     netChainSubset \
     $PWD/output/chain/simulated_germline_m/net/germline_m_to_GRCh38_chr${i}.net \
     $PWD/output/chain/simulated_germline_m/chain_raw/germline_m_to_GRCh38_splited/chr${i}_m.chain \
-    $PWD/output/chain/simulated_germline_m/chaingermline_m_to_GRCh38_chr${i}.chain
+    $PWD/output/chain/simulated_germline_m/chain/germline_m_to_GRCh38_chr${i}.chain
 done
 
 chrom_array=(2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 X Y)
@@ -113,17 +113,13 @@ $PWD/output/chain/simulated_germline_m/chain/germline_m_to_GRCh38.chain \
 $PWD/output/answer/simulated_somatic_m/simulated_somatic_m_newname_liftover_2.bed \
 $PWD/output/answer/simulated_somatic_m/simulated_somatic_m_newname_liftover_unmapped_2.bed
 
-python3 $PWD/script/simulation_sv_set/script/paste_liftover_bed.py \
+python3 $PWD/simulation_sv_set/script/paste_liftover_bed.py \
   $PWD/output/answer/simulated_somatic_p/simulated_somatic_p_newname_liftover_1.bed \
   $PWD/output/answer/simulated_somatic_p/simulated_somatic_p_newname_liftover_2.bed > $PWD/output/answer/simulated_somatic_p/simulated_somatic_p_newname_liftover.bedpe
 
-python3 $PWD/script/simulation_sv_set/script/paste_liftover_bed.py \
+python3 $PWD/simulation_sv_set/script/paste_liftover_bed.py \
   $PWD/output/answer/simulated_somatic_m/simulated_somatic_m_newname_liftover_1.bed \
   $PWD/output/answer/simulated_somatic_m/simulated_somatic_m_newname_liftover_2.bed > $PWD/output/answer/simulated_somatic_m/simulated_somatic_m_newname_liftover.bedpe
 
 cd $PWD/output/golden/
 cat simulated_somatic_p/simulated_somatic_p_newname_liftover.bedpe simulated_somatic_m/simulated_somatic_m_newname_liftover.bedpe | sort -k1,1 -k2,2n -k3,3n -k4,4 -k5,5n -k6,6n > simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe
-
-bgzip -f simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe
-tabix -p bed simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz
-

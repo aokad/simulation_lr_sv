@@ -45,12 +45,12 @@ do
     --f_grc --margin 200 --max_control_support_read 0
     
     # filtering
-    python3 $PWD/script/simulation_sv_set/script/rmdup.py \
+    python3 $PWD/simulation_sv_set/script/rmdup.py \
     output/ob_utils/delly/${a}.txt > \
     output/ob_utils/delly/${a}.rmdup.txt
     
     # vs golden data
-    python3 $PWD/script/simulation_sv_set/script/golden_data_check.py \
+    python3 $PWD/simulation_sv_set/script/golden_data_check.py \
     $PWD/output/ob_utils/delly/${a}.rmdup.txt \
     $PWD/output/golden/simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz \
     $PWD/output/vs_golden_data/delly/simulated_somatic_minimap2_${a}_vs_goldendata.txt
@@ -58,7 +58,7 @@ do
     for support_read in `seq 3 10`
     do
         mkdir -p $PWD/output/vs_golden_data/delly_support_${support_read}
-        python3 $PWD/script/simulation_sv_set/script/golden_data_check_support.py \
+        python3 $PWD/simulation_sv_set/script/golden_data_check_support.py \
         $PWD/output/ob_utils/delly/${a}.rmdup.txt \
         $PWD/output/golden/simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz \
         $PWD/output/vs_golden_data/delly_support_${support_read}/simulated_somatic_minimap2_${a}_vs_goldendata.txt \
@@ -67,7 +67,7 @@ do
 done
 
 # count TP,FP,FN
-python3 $PWD/script/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_data/delly/ $PWD/output/vs_golden_data/delly/simulation_count.txt
+python3 $PWD/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_data/delly/ $PWD/output/vs_golden_data/delly/simulation_count.txt
 
 # count support reads
-python3 $PWD/script/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/delly $PWD/output/vs_golden_data/delly/simulation_count_support.txt
+python3 $PWD/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/delly $PWD/output/vs_golden_data/delly/simulation_count_support.txt

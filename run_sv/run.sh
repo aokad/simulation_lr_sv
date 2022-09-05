@@ -3,8 +3,9 @@ set -eux
 
 SCRIPT_DIR=$(dirname $0)
 
-qsub -N nanomonsv -t 1-30 ${SCRIPT_DIR}/nanomonsv.sh
-qsub -N nanomonsv -t 1-5  ${SCRIPT_DIR}/nanomonsv_germline2.sh
+qsub -N nanomonsv_germline2 -t 1-5  ${SCRIPT_DIR}/nanomonsv_germline2.sh
+qsub -N nanomonsv -hold_jid nanomonsv_germline2 -t 1-30 ${SCRIPT_DIR}/nanomonsv.sh
+
 qsub -N sniffles2 -t 1-30 ${SCRIPT_DIR}/sniffles2.sh
 qsub -N sniffles2 -t 1-5  ${SCRIPT_DIR}/sniffles2_germline2.sh
 qsub -N delly -t 1-30 ${SCRIPT_DIR}/delly.sh

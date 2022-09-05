@@ -11,7 +11,6 @@
 #$ -j y
 #$ -l s_vmem=4G
 #$ -pe def_slot 8
-#$ -l intel
 
 set -eux
 
