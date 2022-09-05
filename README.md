@@ -43,6 +43,7 @@ bash ./create_simulation_seq/run.sh
 ```
 cd ${this_repository}
 singularity pull ./image/chain-file_0.1.0.sif docker://aokad/chain-file:0.1.0
+singularity pull ./image/ob_utils_0.0.12.sif docker://aokad/ob_utils:0.0.12
 
 bash ./create_golden/run.sh
 ```
