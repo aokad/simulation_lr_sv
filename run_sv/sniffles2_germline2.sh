@@ -9,7 +9,7 @@
 #$ -e ./log/
 #$ -o ./log/
 #$ -j y
-#$ -l s_vmem=4G
+#$ -l s_vmem=1G
 #$ -pe def_slot 8
 
 set -eux

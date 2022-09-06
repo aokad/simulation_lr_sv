@@ -9,7 +9,7 @@
 #$ -e ./log/
 #$ -o ./log/
 #$ -j y
-#$ -l s_vmem=1G
+#$ -l s_vmem=4G
 #$ -pe def_slot 8
 
 set -eux
@@ -51,7 +51,17 @@ params=(
 tmp=(${params[$SGE_TASK_ID]})
 NAME=${tmp[0]}
 
-singularity exec $PWD/image/sniffles2_2.0.7.sif \
-  sniffles \
-    -i $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
-    -v $PWD/output/sniffles2/${NAME}/${NAME}.vcf --minsupport 1 --threads 8 --non-germline
+mkdir -p $PWD/output/cutesv/${NAME}/
+
+singularity exec $PWD/image/cutesv_2.0.0.sif\
+  cuteSV \
+    $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
+    $PWD/reference/GRCh38.d1.vd1.fa \
+    $PWD/output/cutesv/${NAME}/${NAME}.vcf \
+    $PWD/output/cutesv/${NAME}/ \
+    --max_cluster_bias_INS 100 \
+    --diff_ratio_merging_INS 0.3 \
+    --max_cluster_bias_DEL 100 \
+    --diff_ratio_merging_DEL 0.3 \
+    --threads 8 \
+    --min_support=1 

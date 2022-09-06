@@ -9,7 +9,7 @@
 #$ -e ./log/
 #$ -o ./log/
 #$ -j y
-#$ -l s_vmem=12G
+#$ -l s_vmem=4G
 
 set -eux
 

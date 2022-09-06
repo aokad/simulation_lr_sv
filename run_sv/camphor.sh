@@ -9,7 +9,7 @@
 #$ -e ./log/
 #$ -o ./log/
 #$ -j y
-#$ -l s_vmem=1G
+#$ -l s_vmem=3G
 #$ -pe def_slot 8
 
 set -eux
@@ -50,8 +50,21 @@ params=(
 
 tmp=(${params[$SGE_TASK_ID]})
 NAME=${tmp[0]}
+CONTROL=${tmp[1]}
 
-singularity exec $PWD/image/sniffles2_2.0.7.sif \
-  sniffles \
-    -i $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
-    -v $PWD/output/sniffles2/${NAME}/${NAME}.vcf --minsupport 1 --threads 8 --non-germline
+OUTPUT_DIR=$PWD/output/CAMPHORsomatic/minimap2/simulated_chr1-22XY.${NAME}
+mkdir -p ${OUTPUT_DIR}
+
+singularity exec $PWD/image/camphor_somatic_20220902.sif \
+    samtools sort -n -@ 8 \
+    $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
+    -O bam -o ${OUTPUT_DIR}/simulated_chr1-22XY.${NAME}.markdup.sort_by_name.bam
+
+singularity exec $PWD/image/camphor_somatic_20220902.sif \
+    bash $PWD/script/camphor_svcall.sh \
+    ${OUTPUT_DIR}/simulated_chr1-22XY.${NAME}.markdup.sort_by_name.bam \
+    $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
+    ${OUTPUT_DIR}
+
+singularity exec $PWD/image/camphor_somatic_20220902.sif \
+    bash $PWD/script/camphor_comparision.sh ${NAME} ${CONTROL}
