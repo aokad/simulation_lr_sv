@@ -61,7 +61,7 @@ singularity exec $PWD/image/camphor_somatic_20220902.sif \
     -O bam -o ${OUTPUT_DIR}/simulated_chr1-22XY.${NAME}.markdup.sort_by_name.bam
 
 singularity exec $PWD/image/camphor_somatic_20220902.sif \
-    bash $PWD/run_sv/camphor_svcall.sh \
+    bash $PWD/run_sv/shell_camphor_svcall.sh \
     ${OUTPUT_DIR}/simulated_chr1-22XY.${NAME}.markdup.sort_by_name.bam \
     $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
     ${OUTPUT_DIR}
@@ -69,4 +69,4 @@ singularity exec $PWD/image/camphor_somatic_20220902.sif \
 rm ${OUTPUT_DIR}/simulated_chr1-22XY.${NAME}.markdup.sort_by_name.bam
 
 singularity exec $PWD/image/camphor_somatic_20220902.sif \
-    bash $PWD/run_sv/camphor_comparision.sh ${NAME} ${CONTROL}
+    bash $PWD/run_sv/shell_camphor_comparision.sh ${NAME} ${CONTROL}
