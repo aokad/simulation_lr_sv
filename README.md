@@ -72,6 +72,6 @@ conda create -n r_env r-essentials r-base
 conda activate r_env
 conda install r-cowplot r-wesanderson
 
-cd ${this_repository}
-bash ./plot/run.sh
+cd ${this_repository}/plot
+bash ./run.sh
 ```

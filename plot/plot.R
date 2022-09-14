@@ -5,8 +5,8 @@ library("wesanderson")
 source("./plot_conf.R")
 
 D <- read_tsv("../output/plot/simulation_count.txt")
-D$Method <- factor(D$Method, levels = c("nanomonsv" , "sniffles2", "delly"),
-    labels = c("nanomonsv", "Sniffles2", "delly"))
+D$Method <- factor(D$Method, levels = c("nanomonsv" , "sniffles2", "delly", "cuteSV", "CAMPHORsomatic"),
+    labels = c("nanomonsv", "Sniffles2", "delly", "cuteSV", "CAMPHORsomatic"))
 D$Yield <- D$Depth * 3
 
 D$Tumor_Purity2 <- factor(as.character(D$Tumor_Purity), 
@@ -49,7 +49,7 @@ ggplot(D2,
 #           p2 + guides(color = FALSE), 
 #           plegend, nrow = 3, rel_heights = c(4.7, 4.7, 0.6))
 
-ggsave("../../output/plot/simulation.pdf", width = 20, height = 8, units = "cm")
+ggsave("../output/plot/simulation.pdf", width = 25, height = 8, units = "cm")
 
 
 
