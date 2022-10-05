@@ -43,7 +43,7 @@ bash ./create_simulation_seq/run.sh
 ```
 cd ${this_repository}
 singularity pull ./image/chain-file_0.1.0.sif docker://aokad/chain-file:0.1.0
-singularity pull ./image/ob_utils_0.0.12.sif docker://aokad/ob_utils:0.0.12
+singularity pull ./image/ob_utils_0.0.12a.sif docker://aokad/ob_utils:0.0.12a
 
 bash ./create_golden/run.sh
 ```
@@ -54,7 +54,7 @@ nanomonsv, sniffles2, delly
 ```
 cd ${this_repository}
 singularity pull ./image/simulationsv-set_0.1.0.sif docker://aokad/simulationsv-set:0.1.0
-singularity pull ./image/ob_utils_0.0.12.sif docker://aokad/ob_utils:0.0.12
+singularity pull ./image/ob_utils_0.0.12a.sif docker://aokad/ob_utils:0.0.12a
 
 wget https://github.com/dellytools/delly/releases/download/v1.0.3/delly_v1.0.3.sif -O ./image/delly_v1.0.3.sif
 singularity pull ./image/sniffles2_2.0.7.sif docker://aokad/sniffles2:2.0.7

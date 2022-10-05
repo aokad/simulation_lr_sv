@@ -15,5 +15,5 @@ set -eux
 
 SCRIPT_FILE=$1
 
-singularity exec $PWD/image/ob_utils_0.0.12.sif \
+singularity exec $PWD/image/ob_utils_0.0.12a.sif \
     bash ${SCRIPT_FILE}
