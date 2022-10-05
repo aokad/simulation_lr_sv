@@ -55,12 +55,12 @@ CONTROL=${tmp[1]}
 OUTPUT_DIR=$PWD/output/CAMPHORsomatic/minimap2/simulated_chr1-22XY.${NAME}
 mkdir -p ${OUTPUT_DIR}
 
-singularity exec $PWD/image/camphor_somatic_20220902.sif \
+singularity exec $PWD/image/camphor_somatic_20221005.sif \
     samtools sort -n -@ 8 \
     $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
     -O bam -o ${OUTPUT_DIR}/simulated_chr1-22XY.${NAME}.markdup.sort_by_name.bam
 
-singularity exec $PWD/image/camphor_somatic_20220902.sif \
+singularity exec $PWD/image/camphor_somatic_20221005.sif \
     bash $PWD/run_sv/shell_camphor_svcall.sh \
     ${OUTPUT_DIR}/simulated_chr1-22XY.${NAME}.markdup.sort_by_name.bam \
     $PWD/output/subsample/minimap2/simulated_chr1-22XY.${NAME}.merge.subsample.bam \
@@ -68,5 +68,5 @@ singularity exec $PWD/image/camphor_somatic_20220902.sif \
 
 rm ${OUTPUT_DIR}/simulated_chr1-22XY.${NAME}.markdup.sort_by_name.bam
 
-singularity exec $PWD/image/camphor_somatic_20220902.sif \
+singularity exec $PWD/image/camphor_somatic_20221005.sif \
     bash $PWD/run_sv/shell_camphor_comparision.sh ${NAME} ${CONTROL}

@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+mkdir -p ../output/plot/
+
 python3 org.py
 Rscript plot.R
 

@@ -59,7 +59,7 @@ singularity pull ./image/ob_utils_0.0.12a.sif docker://aokad/ob_utils:0.0.12a
 wget https://github.com/dellytools/delly/releases/download/v1.0.3/delly_v1.0.3.sif -O ./image/delly_v1.0.3.sif
 singularity pull ./image/sniffles2_2.0.7.sif docker://aokad/sniffles2:2.0.7
 singularity pull ./image/nanomonsv_v0.5.0.sif docker://friend1ws/nanomonsv:v0.5.0
-singularity pull $PWD/image/camphor_somatic_20220902.sif docker://aokad/camphor_somatic:20220902
+singularity pull $PWD/image/camphor_somatic_20221005.sif docker://aokad/camphor_somatic:20221005
 singularity pull $PWD/image/cutesv_2.0.0.sif docker://aokad/cutesv:2.0.0
 
 bash ./run_sv/run.sh
