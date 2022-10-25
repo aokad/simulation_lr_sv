@@ -14,4 +14,4 @@
 set -eux
 
 singularity exec $PWD/image/chain-file_0.1.0.sif \
-    bash $PWD/create_sv_answer/shell_twobit_info.sh
+    bash $PWD/create_golden/shell_twobit_info.sh

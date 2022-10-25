@@ -14,7 +14,7 @@
 set -eux
 
 singularity exec $PWD/image/chain-file_0.1.0.sif \
-    bash $PWD/create_sv_answer/shell_chain.sh
+    bash $PWD/create_golden/shell_chain.sh
 
 singularity exec $PWD/image/ob_utils_0.0.12.sif \
     bgzip -f $PWD/output/golden/simulated_somatic_pm/simulated_somatic_p_m_newname_liftover.bedpe
