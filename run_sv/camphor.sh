@@ -53,6 +53,7 @@ NAME=${tmp[0]}
 CONTROL=${tmp[1]}
 
 OUTPUT_DIR=$PWD/output/CAMPHORsomatic/minimap2/simulated_chr1-22XY.${NAME}
+rm -rf ${OUTPUT_DIR}
 mkdir -p ${OUTPUT_DIR}
 
 singularity exec $PWD/image/camphor_somatic_20221005.sif \
