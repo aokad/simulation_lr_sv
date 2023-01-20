@@ -1,4 +1,8 @@
 #! /usr/bin/env bash
+source ~/conda/x64/etc/profile.d/conda.sh
+conda activate r_env
+
+set -eux
 
 python3 org.py
 Rscript plot.R
