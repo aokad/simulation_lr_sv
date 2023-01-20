@@ -3,7 +3,7 @@ library(wesanderson)
 
 source("./plot_conf.R")
 
-D <- read_tsv("../output/plot/simulation_count_support.txt")
+D <- read_tsv("../../output/plot/simulation_count_support.txt")
 D$Yield <- D$Depth * 3
 
 D$Yield2 <- factor(as.character(D$Yield), 
@@ -30,7 +30,7 @@ ggplot(D2,
   scale_x_continuous(breaks = seq(3, 10, 1)) + 
   labs(x = "Minimum supporting read", y = "Ratio", colour = "Tumor Purity (%)")
 
-ggsave("../output/plot/simulation_support.pdf", width = 20, height = 8, units = "cm")
+ggsave("../../output/plot/simulation_support.pdf", width = 20, height = 8, units = "cm")
 
   
 
