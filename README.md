@@ -2,7 +2,7 @@
 
 ## Set Up
 ```
-git clone https://github.com/aokad/simulation_lr_sv.git --recursive
+git clone https://github.com/aokad/simulation_lr_sv.git --recursive -b v0.2.1
 ```
 
 download reference files
@@ -43,7 +43,7 @@ bash ./create_simulation_seq/run.sh
 ```
 cd ${this_repository}
 singularity pull ./image/chain-file_0.1.0.sif docker://aokad/chain-file:0.1.0
-singularity pull ./image/ob_utils_0.0.12a.sif docker://aokad/ob_utils:0.0.12a
+singularity pull ./image/ob_utils_0.0.12b.sif docker://aokad/ob_utils:0.0.12b
 
 bash ./create_golden/run.sh
 ```
@@ -54,13 +54,14 @@ nanomonsv, sniffles2, delly
 ```
 cd ${this_repository}
 singularity pull ./image/simulationsv-set_0.1.0.sif docker://aokad/simulationsv-set:0.1.0
-singularity pull ./image/ob_utils_0.0.12a.sif docker://aokad/ob_utils:0.0.12a
+singularity pull ./image/ob_utils_0.0.12b.sif docker://aokad/ob_utils:0.0.12b
 
 wget https://github.com/dellytools/delly/releases/download/v1.0.3/delly_v1.0.3.sif -O ./image/delly_v1.0.3.sif
-singularity pull ./image/sniffles2_2.0.7.sif docker://aokad/sniffles2:2.0.7
-singularity pull ./image/nanomonsv_v0.5.0.sif docker://friend1ws/nanomonsv:v0.5.0
+singularity pull $PWD/image/sniffles2_2.0.7.sif docker://aokad/sniffles2:2.0.7
+singularity pull $PWD/image/nanomonsv_v0.5.0.sif docker://friend1ws/nanomonsv:v0.5.0
 singularity pull $PWD/image/camphor_somatic_20221005.sif docker://aokad/camphor_somatic:20221005
 singularity pull $PWD/image/cutesv_2.0.0.sif docker://aokad/cutesv:2.0.0
+singularity pull $PWD/svim_2.0.0.sif docker://aokad/svim:2.0.0
 
 bash ./run_sv/run.sh
 ```

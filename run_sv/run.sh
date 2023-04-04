@@ -28,3 +28,9 @@ qsub -N camphor_vsgolden -hold_jid camphor ${SCRIPT_DIR}/vsgolden.sh ${SCRIPT_DI
 qsub -N cutesv -t 1-30 ${SCRIPT_DIR}/cutesv.sh
 qsub -N cutesv -t 1-5  ${SCRIPT_DIR}/cutesv_germline2.sh
 qsub -N cutesv_vsgolden -hold_jid cutesv ${SCRIPT_DIR}/vsgolden.sh ${SCRIPT_DIR}/cutesv_vsgolden.sh
+
+# svim
+qsub -N svim -t 1-30 ${SCRIPT_DIR}/svim.sh
+qsub -N svim -t 1-5  ${SCRIPT_DIR}/svim_germline2.sh
+qsub -N svim_vsgolden -hold_jid svim ${SCRIPT_DIR}/vsgolden.sh ${SCRIPT_DIR}/svim_vsgolden.sh
+
