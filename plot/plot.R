@@ -7,8 +7,8 @@ source("./plot_conf.R")
 D <- read_tsv("../../output/plot/simulation_count.txt")
 #D$Method <- factor(D$Method, levels = c("CAMPHORsomatic", "cuteSV", "delly", "nanomonsv", "sniffles2"),
 #    labels = c("CAMPHORsomatic", "cuteSV", "Delly", "nanomonsv", "Sniffles2"))
-D$Method <- factor(D$Method, levels = c("nanomonsv" , "sniffles2", "cuteSV", "delly", "CAMPHORsomatic", "SVIM"),
-    labels = c("nanomonsv", "Sniffles2-based method", "cuteSV-based method", "Delly", "CAMPHORsomatic", "SVIM"))
+D$Method <- factor(D$Method, levels = c("nanomonsv" , "sniffles2", "cuteSV", "delly", "CAMPHORsomatic", "SVIM", "savana"),
+    labels = c("nanomonsv", "Sniffles2-based method", "cuteSV-based method", "Delly-based method", "CAMPHORsomatic", "SVIM-based method", "SAVANA"))
 D$Yield <- D$Depth * 3
 
 D$Tumor_Purity2 <- factor(as.character(D$Tumor_Purity), 
@@ -30,7 +30,7 @@ ggplot(D2,
   ylim(c(0, 1)) +
   scale_colour_manual(values = wes_palette("Cavalcanti1")) +
   scale_x_continuous(breaks = seq(30, 150, 30)) + 
-  labs(x = "Yield (Gbp)", y = "Precision", colour = "Tumor Purity (%)")
+  labs(x = "Yield (Gbp)", y = "Ratio", colour = "Tumor Purity (%)")
 
 
 # p2 <- ggplot(D %>% filter(Tumor_Purity2 != "0"), 

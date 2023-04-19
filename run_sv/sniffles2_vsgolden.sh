@@ -71,3 +71,6 @@ python3 $PWD/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_da
 
 # count support reads
 python3 $PWD/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/sniffles2 $PWD/output/vs_golden_data/sniffles2/simulation_count_support.txt
+
+# count TP,FP,FN (each SV_Type)
+python3 $PWD/simulation_sv_set/script/count_TP_FP_FN_svtype.py $PWD/output/vs_golden_data/sniffles2 $PWD/output/vs_golden_data/sniffles2/simulation_count_svtype.txt

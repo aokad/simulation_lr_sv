@@ -6,8 +6,8 @@ source("./plot_conf.R")
 
 D <- read_tsv("../../output/plot/simulation_count_svtype.txt")
 
-D$Method <- factor(D$Method, levels = c("nanomonsv" , "sniffles2", "cuteSV", "delly", "CAMPHORsomatic", "SVIM"),
-    labels = c("nanomonsv", "Sniffles2-based method", "cuteSV-based method", "Delly-based method", "CAMPHORsomatic", "SVIM-based method"))
+D$Method <- factor(D$Method, levels = c("nanomonsv" , "sniffles2", "cuteSV", "delly", "CAMPHORsomatic", "SVIM", "savana"),
+    labels = c("nanomonsv", "Sniffles2-based method", "cuteSV-based method", "Delly-based method", "CAMPHORsomatic", "SVIM-based method", "SAVANA"))
 D$Yield <- D$Depth * 3
 
 D$Tumor_Purity2 <- factor(as.character(D$Tumor_Purity), 

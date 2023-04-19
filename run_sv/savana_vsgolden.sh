@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eux
 
-mkdir -p output/ob_utils/svim/
-mkdir -p output/vs_golden_data/svim/
+mkdir -p output/ob_utils/savana/
+mkdir -p output/vs_golden_data/savana/
 
 for a in "DP10_TP0_TDP0"    \
          "DP10_TP20_TDP2"   \
@@ -37,40 +37,40 @@ for a in "DP10_TP0_TDP0"    \
 do
     control=$(echo ${a} | cut -f 1 -d _)
     # somatic filter with controls + convert to nanomonsv format
-    ob_utils svim_sv \
-    --in_svim_tumor_sv output/svim/${a}/variants.vcf \
-    --in_svim_control_sv output/svim/${control}/variants.vcf \
-    --output output/ob_utils/svim/${a}.txt \
+    ob_utils savana_sv \
+    --in_savana_tumor_sv output/savana/${a}/simulated_chr1-22XY.${a}.merge.subsample.somatic.sv_breakpoints.strict.vcf \
+    --output output/ob_utils/savana/${a}.txt \
     --filter_scaffold_option \
-    --f_grc --margin 200 --max_control_support_read 0
+    --f_grc
     
     # filtering
     python3 $PWD/simulation_sv_set/script/rmdup.py \
-    output/ob_utils/svim/${a}.txt > \
-    output/ob_utils/svim/${a}.rmdup.txt
+    output/ob_utils/savana/${a}.txt > \
+    output/ob_utils/savana/${a}.rmdup.txt
     
     # vs golden data
     python3 $PWD/simulation_sv_set/script/golden_data_check.py \
-    $PWD/output/ob_utils/svim/${a}.rmdup.txt \
+    $PWD/output/ob_utils/savana/${a}.rmdup.txt \
     $PWD/output/survivor/simulated_somatic_chr1-22XY_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz \
-    $PWD/output/vs_golden_data/svim/simulated_somatic_minimap2_${a}_vs_goldendata.txt
+    $PWD/output/vs_golden_data/savana/simulated_somatic_minimap2_${a}_vs_goldendata.txt
 
     for support_read in `seq 3 10`
     do
-        mkdir -p $PWD/output/vs_golden_data/svim_support_${support_read}
+        mkdir -p $PWD/output/vs_golden_data/savana_support_${support_read}
         python3 $PWD/simulation_sv_set/script/golden_data_check_support.py \
-        $PWD/output/ob_utils/svim/${a}.rmdup.txt \
+        $PWD/output/ob_utils/savana/${a}.rmdup.txt \
         $PWD/output/survivor/simulated_somatic_chr1-22XY_pm/simulated_somatic_p_m_newname_liftover.bedpe.gz \
-        $PWD/output/vs_golden_data/svim_support_${support_read}/simulated_somatic_minimap2_${a}_vs_goldendata.txt \
+        $PWD/output/vs_golden_data/savana_support_${support_read}/simulated_somatic_minimap2_${a}_vs_goldendata.txt \
         ${support_read}
     done
 done
 
 # count TP,FP,FN
-python3 $PWD/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_data/svim/ $PWD/output/vs_golden_data/svim/simulation_count.txt
+python3 $PWD/simulation_sv_set/script/count_TP_FP_FN.py $PWD/output/vs_golden_data/savana/ $PWD/output/vs_golden_data/savana/simulation_count.txt
 
 # count support reads
-python3 $PWD/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/svim $PWD/output/vs_golden_data/svim/simulation_count_support.txt
+python3 $PWD/simulation_sv_set/script/count_TP_FP_FN_support.py $PWD/output/vs_golden_data/savana $PWD/output/vs_golden_data/savana/simulation_count_support.txt
 
 # count TP,FP,FN (each SV_Type)
-python3 $PWD/simulation_sv_set/script/count_TP_FP_FN_svtype.py $PWD/output/vs_golden_data/svim $PWD/output/vs_golden_data/svim/simulation_count_svtype.txt
+python3 $PWD/simulation_sv_set/script/count_TP_FP_FN_svtype.py $PWD/output/vs_golden_data/savana $PWD/output/vs_golden_data/savana/simulation_count_svtype.txt
+
