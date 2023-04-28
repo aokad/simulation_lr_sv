@@ -17,6 +17,7 @@ D2 <- D %>% filter(Tumor_Purity != "0") %>%
   mutate(Precision = TP / (TP + FP + 1), Recall = TP / (TP + FN + 1)) %>%
   gather(key = Measurement, value = Ratio, Precision, Recall) 
 
+
 ggplot(D2, 
        aes(x = Support_Read, y = Ratio, group = Tumor_Purity2, colour = Tumor_Purity2)) + 
   geom_line() +
@@ -31,6 +32,3 @@ ggplot(D2,
   labs(x = "Minimum supporting read", y = "Ratio", colour = "Tumor Purity (%)")
 
 ggsave("../../output/plot/simulation_support.pdf", width = 20, height = 8, units = "cm")
-
-  
-

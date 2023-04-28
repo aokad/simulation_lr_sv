@@ -23,5 +23,6 @@ with open("../../output/plot/simulation_count_svtype.txt", 'w') as hout:
     write_rec("../../output/vs_golden_data/nanomonsv/simulation_count_svtype.txt", hout, "nanomonsv")
     write_rec("../../output/vs_golden_data/sniffles2/simulation_count_svtype.txt", hout, "sniffles2")
     write_rec("../../output/vs_golden_data/svim/simulation_count_svtype.txt", hout, "SVIM")
+    write_rec("../../output/vs_golden_data/savana/simulation_count_svtype.txt", hout, "SAVANA")
 hout.close()
 
